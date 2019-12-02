@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+
+::-moz-selection {
+  @include bg-color(color);
+  @include accent-color(background-color);
+}
+
+::selection {
+  @include bg-color(color);
+  @include accent-color(background-color);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+body {
+  font-family: $font;
+  @include primary-color(color);
+  @include bg-color(background-color);
+}
+
+a.link {
+  text-decoration: none;
+  @include accent-color(color); 
+}
+
+p {
+  @include text-color(color);
+  line-height: 1.4;
+}
+
+svg path {
+  @include accent-color(fill);
+}
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 28px;
+  @media screen and (max-width: 992px) {
+    width: 100%;
+  }
+}
+
+footer {
+  padding-bottom: 64px;
+  padding-top: 96px;
+  display: flex;
+  .socials {
+    a {
+      @include text-color(color);
+      text-decoration: none;
+    }
+  }
+  span {
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,56 @@
+// fonts
+$font: 'Roboto', sans-serif;
+
+// colors
+$primary-color: #000;
+$accent-color: #F6583F;
+$bg-color: #F5F5F5;
+$text-color: rgba($primary-color, .7);
+$image-title-color: #fff;
+$image-gradient: linear-gradient(180deg, transparent 50%, #000 100%);
+
+// darkmode config
+:root {
+  --primary-color: #000;
+  --accent-color: #F6583F;
+  --bg-color: #F5F5F5;
+  --text-color: rgba(0, 0, 0, .7);
+  --image-title-color: #fff;
+  --image-gradient: linear-gradient(180deg, transparent 50%, #000 100%);
+  --image-blend-mode: normal;
+
+  @media (prefers-color-scheme: dark) {
+    --primary-color: #fff;
+    --accent-color: #fff;
+    --bg-color: #000;
+    --text-color: rgba(255, 255, 255, .7);
+    // --image-title-color: #000;
+    // --image-gradient: linear-gradient(180deg, transparent 50%, rgba(255, 255, 255, .8) 100%);
+    --image-blend-mode: luminosity;
+  }
+}
+
+@mixin primary-color($property) {
+  #{$property}: $primary-color;
+  #{$property}: var(--primary-color);
+}
+@mixin accent-color($property) {
+  #{$property}: $accent-color;
+  #{$property}: var(--accent-color);
+}
+@mixin bg-color($property) {
+  #{$property}: $bg-color;
+  #{$property}: var(--bg-color);
+}
+@mixin text-color($property) {
+  #{$property}: $text-color;
+  #{$property}: var(--text-color);
+}
+@mixin image-title-color($property) {
+  #{$property}: $image-title-color;
+  #{$property}: var(--image-title-color);
+}
+@mixin image-gradient {
+  background: $image-gradient;
+  background: var(--image-gradient);
+}
