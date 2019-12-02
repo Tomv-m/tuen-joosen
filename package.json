@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "tuen-joosen",
   "version": "1.0.0",
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.dev.js",
