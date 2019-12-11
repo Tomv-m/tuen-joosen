@@ -1,0 +1,21 @@
+.over {
+  &-wrapper {
+    width: 100%;
+    display: flex;
+  }
+  &-info {
+    width: 80%;
+    padding-right: 52px;
+    h2 {
+      font-size: 4.4em;
+      padding-bottom: 52px;
+    }
+  }
+  &-img {
+    width: 20%;
+    @include bg-color(background-color);
+    img {
+      mix-blend-mode: var(--image-blend-mode);
+    }
+  }
+}

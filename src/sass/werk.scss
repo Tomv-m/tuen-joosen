@@ -1,0 +1,75 @@
+.werk {
+  &-filter {
+    margin-left: auto;
+    &-button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: .8em;
+      padding: 6px 16px;
+      margin-left: 12px;
+      border-radius: 20px;
+      @include accent-color(color);
+      transition: color .3s ease-in-out, background-color .3s ease-in-out;
+      &.active {
+        @include accent-color(background-color);
+        @include bg-color(color);
+      }
+    }
+  }
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    .project {
+      display: block;
+      position: relative;
+      text-decoration: none;
+      overflow: hidden;
+      background-color: lightgrey;
+      border-radius: 6px;
+      margin-bottom: 3vw;
+      width: 48%;
+      @include image-title-color(color);
+      &:nth-child(2n) {
+        margin-left: 4%;
+      }
+      img {
+        width: 100%;
+      }
+      &__info {
+        position: absolute;
+        left: 46px;
+        bottom: 28px;
+        z-index: 1;
+        transition: bottom .3s ease-in-out;
+        h3 {
+          font-size: 2.4em;
+          padding-bottom: 6px;
+          transition: padding-bottom .3s ease-in-out;
+        }
+        span {
+          opacity: .6;
+          text-transform: capitalize;
+        }
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include image-gradient;
+        opacity: .4;
+      }
+      &:hover {
+        .project__info {
+          bottom: 34px;
+          h3 {
+            padding-bottom: 8px;
+          }
+        }
+      }
+    }
+  }
+}

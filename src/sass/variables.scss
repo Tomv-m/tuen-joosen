@@ -5,7 +5,7 @@ $font: 'Roboto', sans-serif;
 $primary-color: #000;
 $accent-color: #F6583F;
 $bg-color: #F5F5F5;
-$text-color: rgba($primary-color, .7);
+$text-color: rgba($primary-color, .6);
 $image-title-color: #fff;
 $image-gradient: linear-gradient(180deg, transparent 50%, #000 100%);
 
@@ -14,7 +14,7 @@ $image-gradient: linear-gradient(180deg, transparent 50%, #000 100%);
   --primary-color: #000;
   --accent-color: #F6583F;
   --bg-color: #F5F5F5;
-  --text-color: rgba(0, 0, 0, .7);
+  --text-color: rgba(0, 0, 0, .6);
   --image-title-color: #fff;
   --image-gradient: linear-gradient(180deg, transparent 50%, #000 100%);
   --image-blend-mode: normal;
@@ -53,4 +53,11 @@ $image-gradient: linear-gradient(180deg, transparent 50%, #000 100%);
 @mixin image-gradient {
   background: $image-gradient;
   background: var(--image-gradient);
+}
+
+@mixin link-hover {
+  transition: color .3s ease-in-out;
+  &:hover {
+    @include accent-color(color)
+  }
 }

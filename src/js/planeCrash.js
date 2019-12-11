@@ -33,7 +33,6 @@ export default class PlaneCrash {
   
     imagesLoaded(this.frames, { background: true }, () => {
       this.loaded = true
-      console.log(this.loaded)
     })
   }
   listeners() {
@@ -77,5 +76,8 @@ export default class PlaneCrash {
     this.frames.forEach(frame => {
       gsap.set(frame, { alpha: 0 })
     })
+  }
+  destroy() {
+    this.sequence.remove()
   }
 }

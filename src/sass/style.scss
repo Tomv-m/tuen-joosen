@@ -17,6 +17,26 @@
  }
 }
 
+// top HEADER
+.top-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 64px;
+  nav {
+    margin-left: auto;
+    .nav-link {
+      margin-left: 42px;
+      text-decoration: none;
+      @include text-color(color);
+      @include link-hover;
+      &.active {
+        @include primary-color(color);
+      }
+    }
+  }
+}
+
 // HOME page
 .header {
   width: 100%;
@@ -25,22 +45,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-  &-top {
-    padding-top: 64px;
-    display: flex;
-    align-items: center;
-    nav {
-      margin-left: auto;
-      .nav-link {
-        margin-left: 42px;
-        text-decoration: none;
-        @include text-color(color);
-        &.active {
-          @include primary-color(color);
-        }
-      }
-    }
   }
   &-content {
     flex-grow: 1;
@@ -106,71 +110,30 @@
   }
 }
 
-.werk {
-  header {
-    padding-top: 28px;
-    padding-bottom: 52px;
-    display: flex;
-    align-items: flex-end;
-    h2 {
-      font-size: 4.4em;
-    }
-    .link-wrapper {
-      margin-left: auto;
-    }
+section.page {
+  margin-top: 120px;
+}
+
+header.title {
+  padding-top: 28px;
+  padding-bottom: 52px;
+  display: flex;
+  align-items: flex-end;
+  h2 {
+    font-size: 4.4em;
   }
-  .projects {
-    display: flex;
-    flex-wrap: wrap;
-    .project {
-      display: block;
-      position: relative;
+  .link-wrapper {
+    margin-left: auto;
+    a {
       text-decoration: none;
-      overflow: hidden;
-      background-color: lightgrey;
-      border-radius: 6px;
-      margin-bottom: 3vw;
-      width: 48%;
-      @include image-title-color(color);
-      &:nth-child(2n) {
-        margin-left: 4%;
-      }
-      img {
-        width: 100%;
-      }
-      &__info {
-        position: absolute;
-        left: 46px;
-        bottom: 28px;
-        z-index: 1;
-        transition: bottom .3s ease-in-out;
-        h3 {
-          font-size: 2.4em;
-          padding-bottom: 6px;
-          transition: padding-bottom .3s ease-in-out;
-        }
-        span {
-          opacity: .6;
-        }
-      }
-      &:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        @include image-gradient;
-        opacity: .4;
-      }
+      @include accent-color(color);
+      @include link-hover;
       &:hover {
-        .project__info {
-          bottom: 34px;
-          h3 {
-            padding-bottom: 8px;
-          }
-        }
+        @include text-color(color);
       }
     }
   }
 }
+ 
+@import './werk';
+@import './over';
