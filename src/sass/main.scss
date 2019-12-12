@@ -10,17 +10,8 @@
   @include accent-color(background-color);
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
- 
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+.scroll-container {
+  height: 100vh;
 }
 
 body {
@@ -53,8 +44,8 @@ svg path {
 }
 
 footer {
-  padding-bottom: 64px;
-  padding-top: 96px;
+  margin-bottom: 64px;
+  margin-top: 96px;
   display: flex;
   .socials {
     a {

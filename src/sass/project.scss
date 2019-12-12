@@ -1,0 +1,22 @@
+.project {
+  &-info {
+    margin-bottom: 65px;
+    width: 52%;
+  }
+  &-links {
+    h4 {
+      margin-bottom: 10px;
+      @include accent-color(color);
+    }
+    .link-wrapper {
+      padding: 8px 0;
+    }
+  }
+  &-media {
+    padding: 96px 0;
+  }
+  iframe {
+    overflow: hidden;
+    border-radius: 6px;
+  }
+}

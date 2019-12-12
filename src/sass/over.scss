@@ -15,6 +15,7 @@
     width: 20%;
     @include bg-color(background-color);
     img {
+      border-radius: 6px;
       mix-blend-mode: var(--image-blend-mode);
     }
   }

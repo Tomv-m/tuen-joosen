@@ -1,10 +1,20 @@
 import '../sass/style.scss'
 
-import gsap from 'gsap'
+import gsap, { Power2 } from 'gsap'
 import barba from '@barba/core'
+import Scrollbar from 'smooth-scrollbar'
+import YTPlayer from 'yt-player'
 
 import PlaneCrash from './planeCrash'
 import buildProjects from './buildProjects'
+
+const scroll = Scrollbar.init(document.querySelector('.scroll-container'), {
+  damping: .1,
+  renderByPixels: false
+})
+scroll.track.xAxis.element.remove()
+scroll.track.yAxis.element.remove() 
+
 
 let planeCrash
 
@@ -13,28 +23,19 @@ const views = [
     namespace: 'index',
     beforeEnter({ next }) {
       const { container } = next
-      let scrollPos = window.pageXOffset
-      let scrollHeight = document.body.offsetHeight - window.innerHeight
       const circle = container.querySelector('.me-circle svg')
 
       const projectsTag = container.querySelector('.projects')
-      buildProjects(projectsTag, { count: 2 })
+      buildProjects(projectsTag, { count: 2, random: true })
 
-      window.addEventListener('resize', () => {
-        scrollHeight = document.body.offsetHeight - window.innerHeight
-      })
-
-      window.addEventListener('scroll', () => {
-        scrollPos = window.pageYOffset
-
-        gsap.to(circle, .8, { rotate: `-${360 * (scrollPos / scrollHeight)}deg` })
+      scroll.addListener(({ offset, limit }) => {
+        gsap.set(circle, { rotate: `-${360 * (offset.y / limit.y)}deg` })
       })
 
       const scrollDown = document.querySelector('.scroll-down')
       scrollDown.addEventListener('click', () => {
-        window.scrollTo({
-          top: window.innerHeight,
-          behavior: 'smooth'
+        scroll.scrollTo(0, window.innerHeight, 600, {
+          easing: Power2.easeInOut,
         })
       })
 
@@ -67,10 +68,56 @@ const views = [
         })
       })
 
-      buildProjects(projectsTag)
+      buildProjects(projectsTag, { random: true })
     },
   },
+  {
+    namespace: 'project',
+    beforeEnter({ next }) {
+      const { container } = next
+
+      const projectsTag = container.querySelector('.projects')
+      const pageTitle = container.querySelector('.title h2').innerText
+      buildProjects(projectsTag, { count: 2, random: true, exclude: pageTitle })
+    }
+  }
 ]
+
+const buildVideos = container => {
+  const players = container.querySelectorAll('.player')
+  players.forEach(playerTag => {
+    const videoTag = document.createElement('div')
+    videoTag.style.pointerEvents = 'none'
+    const videoId = playerTag.getAttribute('data-player-id')
+    const ratio = playerTag.getAttribute('data-player-ratio')
+    const height = playerTag.offsetWidth / ratio
+
+    const player = new YTPlayer(videoTag, {
+      width: '100%',
+      height,
+      controls: false
+    })
+    player.load(videoId)
+    player.setVolume(100)
+
+    let isPlaying = false
+    playerTag.addEventListener('click', () => {
+      if (isPlaying) {
+        player.pause()
+        isPlaying = false
+      } else {
+        player.play()
+        isPlaying = true
+      }
+    })
+
+    window.addEventListener('resize', () => { 
+      player.setSize('100%', playerTag.offsetWidth / ratio)
+    })
+
+    playerTag.appendChild(videoTag)
+  })
+}
 
 barba.init({
   transitions: [
@@ -79,6 +126,10 @@ barba.init({
       once({ next }) {
         gsap.set(next.container, { alpha: 0 })
         gsap.to(next.container, { alpha: 1, delay: 1 })
+
+        if (next.namespace === 'project') {
+          buildVideos(next.container)
+        }
       },
       beforeEnter() {
         scrollTo(0, 0)
@@ -86,6 +137,10 @@ barba.init({
       enter({ next }) {
         gsap.set(next.container, { alpha: 0 })
         gsap.to(next.container, { alpha: 1 })
+
+        if (next.namespace === 'project') {
+          buildVideos(next.container)
+        }
       },
       beforeLeave({ current }) {
         return new Promise(resolve => {

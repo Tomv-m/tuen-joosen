@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 64px;
+  padding-top: 64px;
   nav {
     margin-left: auto;
     .nav-link {
@@ -32,79 +32,6 @@
       @include link-hover;
       &.active {
         @include primary-color(color);
-      }
-    }
-  }
-}
-
-// HOME page
-.header {
-  width: 100%;
-  &-home {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  &-content {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    @media screen and (max-width: 992px) {
-      flex-direction: column-reverse;
-    }
-    &__left {
-      width: 60%;
-      h1 {
-        span {
-          font-size: .6em;
-          font-weight: 300;
-        }
-        font-size: 4.4rem;
-        padding-bottom: 52px;
-      }
-      .link-wrapper{
-        padding-top: 28px;
-      }
-    }
-    &__right {
-      padding-left: 48px;
-      margin-left: auto;
-      .me {
-        &-wrapper {
-          position: relative;
-          display: block;
-          @include bg-color(background-color);
-        }
-        &-image {
-          border-radius: 6px;
-          mix-blend-mode: var(--image-blend-mode);
-        }
-        &-circle {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          transform: translate(-50%, 50%);
-          z-index: 1;
-        }
-      }
-    }
-  }
-  &-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 64px;
-    .scroll-down {
-      flex-direction: column;
-      cursor: pointer;
-      @include accent-color(color);
-      text-align: center;
-      span {
-        display: block;
-        padding-bottom: 14px;
-        font-weight: 500;
       }
     }
   }
@@ -135,5 +62,7 @@ header.title {
   }
 }
  
+@import './home';
 @import './werk';
 @import './over';
+@import './project';
