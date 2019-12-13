@@ -1,9 +1,8 @@
 import projectsData from './data/projects'
-import { random } from 'gsap/gsap-core'
 
 export default (el, options) => {
   el.innerHTML = ''
-  let data = projectsData
+  let data = [...projectsData]
 
   if (options !== undefined) {
     const random = options.random
@@ -12,7 +11,7 @@ export default (el, options) => {
     const filter = options.filter
 
     if (random) {
-      data.sort(() => Math.random() - 0.5)
+      data = data.sort(() => Math.random() - 0.5)
     }
     
     if (exclude) {

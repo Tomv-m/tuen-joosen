@@ -2,37 +2,37 @@
   {
     "title": "STTA aftermovie",
     "category": "video",
-    "imageName": "project-1",
+    "imageName": "stta",
     "link": "/werk/stta-aftermovie.html"
   },
   {
     "title": "Max v Dijk",
     "category": "website",
-    "imageName": "project-1",
+    "imageName": "maxdijk",
     "link": "/werk/max-v-dijk.html"
   },
   {
     "title": "Studio Tielemans",
     "category": "uitstraling",
-    "imageName": "project-1",
+    "imageName": "stta",
     "link": "/werk/studio-tielemans.html"
   },
   {
     "title": "Video's",
     "category": "video",
-    "imageName": "project-1",
+    "imageName": "prettyup",
     "link": "/werk/video-s.html"
   },
   {
     "title": "Travel enco",
     "category": "magazine",
-    "imageName": "project-1",
+    "imageName": "travel-enco",
     "link": "/werk/travel-enco.html"
   },
   {
     "title": "Never Created",
     "category": "uitstraling",
-    "imageName": "project-1",
+    "imageName": "maxdijk",
     "link": "/werk/never-created.html"
   }
 ]

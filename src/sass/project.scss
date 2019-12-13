@@ -1,7 +1,7 @@
 .project {
   &-info {
     margin-bottom: 65px;
-    width: 52%;
+    width: 60%;
   }
   &-links {
     h4 {
@@ -14,9 +14,40 @@
   }
   &-media {
     padding: 96px 0;
+    &__item {
+      margin-bottom: 52px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      iframe {
+        overflow: hidden;
+        border-radius: 6px;
+        width: 100%;
+      }
+      img {
+        width: 100%;
+        border-radius: 6px;
+      }
+    }
   }
-  iframe {
-    overflow: hidden;
-    border-radius: 6px;
+  &-wrapper  {
+    display: flex;
+    .project-info {
+      h2 {
+        font-size: 4.4em;
+        padding-bottom: 52px;
+      }
+      .project-links {
+        margin-top: 56px;
+      }
+    }
+    .project-img {
+      margin-left: auto;
+      width: 20%;
+      img {
+        border-radius: 6px;
+        width: 100%;
+      }
+    }
   }
 }

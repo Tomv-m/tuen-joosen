@@ -26,7 +26,6 @@
     "@barba/core": "^2.9.2",
     "gsap": "^3.0.2",
     "imagesloaded": "^4.1.4",
-    "smooth-scrollbar": "^8.5.1",
-    "yt-player": "^3.4.3"
+    "smooth-scrollbar": "^8.5.1"
   }
 }

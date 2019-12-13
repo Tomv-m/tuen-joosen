@@ -3,7 +3,6 @@ import '../sass/style.scss'
 import gsap, { Power2 } from 'gsap'
 import barba from '@barba/core'
 import Scrollbar from 'smooth-scrollbar'
-import YTPlayer from 'yt-player'
 
 import PlaneCrash from './planeCrash'
 import buildProjects from './buildProjects'
@@ -68,13 +67,34 @@ const views = [
         })
       })
 
-      buildProjects(projectsTag, { random: true })
+      buildProjects(projectsTag)
     },
   },
   {
     namespace: 'project',
     beforeEnter({ next }) {
       const { container } = next
+
+      const items = container.querySelectorAll('.project-media__item')
+      items.forEach(item => {
+        const frameTag = item.querySelector('iframe')
+        if (frameTag) {
+          const ratio = frameTag.getAttribute('data-ratio')
+          if (ratio !== undefined) {
+            frameTag.style.height = (frameTag.offsetWidth / ratio) + 'px'
+          }
+          window.addEventListener('resize', () => {
+            if (ratio !== undefined) {
+              frameTag.style.height = (frameTag.offsetWidth / ratio) + 'px'
+            }
+          })
+  
+          frameTag.style.pointerEvents = 'none'
+          item.addEventListener('click', () => {
+            frameTag.style.pointerEvents = 'all'
+          })
+        }
+      })
 
       const projectsTag = container.querySelector('.projects')
       const pageTitle = container.querySelector('.title h2').innerText
@@ -83,41 +103,6 @@ const views = [
   }
 ]
 
-const buildVideos = container => {
-  const players = container.querySelectorAll('.player')
-  players.forEach(playerTag => {
-    const videoTag = document.createElement('div')
-    videoTag.style.pointerEvents = 'none'
-    const videoId = playerTag.getAttribute('data-player-id')
-    const ratio = playerTag.getAttribute('data-player-ratio')
-    const height = playerTag.offsetWidth / ratio
-
-    const player = new YTPlayer(videoTag, {
-      width: '100%',
-      height,
-      controls: false
-    })
-    player.load(videoId)
-    player.setVolume(100)
-
-    let isPlaying = false
-    playerTag.addEventListener('click', () => {
-      if (isPlaying) {
-        player.pause()
-        isPlaying = false
-      } else {
-        player.play()
-        isPlaying = true
-      }
-    })
-
-    window.addEventListener('resize', () => { 
-      player.setSize('100%', playerTag.offsetWidth / ratio)
-    })
-
-    playerTag.appendChild(videoTag)
-  })
-}
 
 barba.init({
   transitions: [
@@ -126,10 +111,6 @@ barba.init({
       once({ next }) {
         gsap.set(next.container, { alpha: 0 })
         gsap.to(next.container, { alpha: 1, delay: 1 })
-
-        if (next.namespace === 'project') {
-          buildVideos(next.container)
-        }
       },
       beforeEnter() {
         scrollTo(0, 0)
@@ -137,10 +118,6 @@ barba.init({
       enter({ next }) {
         gsap.set(next.container, { alpha: 0 })
         gsap.to(next.container, { alpha: 1 })
-
-        if (next.namespace === 'project') {
-          buildVideos(next.container)
-        }
       },
       beforeLeave({ current }) {
         return new Promise(resolve => {

@@ -4,7 +4,7 @@
     display: flex;
   }
   &-info {
-    width: 80%;
+    width: 60%;
     padding-right: 52px;
     h2 {
       font-size: 4.4em;
@@ -12,6 +12,7 @@
     }
   }
   &-img {
+    margin-left: auto;
     width: 20%;
     @include bg-color(background-color);
     img {

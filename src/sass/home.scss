@@ -27,6 +27,10 @@
       }
       .link-wrapper{
         padding-top: 28px;
+        a {
+          text-decoration: none;
+          @include accent-color(color);
+        }
       }
     }
     &__right {
