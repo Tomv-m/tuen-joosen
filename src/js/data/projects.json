@@ -12,27 +12,15 @@
     "link": "/werk/max-v-dijk.html"
   },
   {
-    "title": "Studio Tielemans",
-    "category": "uitstraling",
-    "imageName": "stta",
-    "link": "/werk/studio-tielemans.html"
-  },
-  {
     "title": "Video's",
     "category": "video",
     "imageName": "prettyup",
     "link": "/werk/video-s.html"
   },
   {
-    "title": "Travel enco",
-    "category": "magazine",
-    "imageName": "travel-enco",
-    "link": "/werk/travel-enco.html"
-  },
-  {
     "title": "Never Created",
     "category": "uitstraling",
-    "imageName": "maxdijk",
+    "imageName": "nevercreated",
     "link": "/werk/never-created.html"
   }
 ]

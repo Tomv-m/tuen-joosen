@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap");
 
 ::-moz-selection {
   @include bg-color(color);
@@ -21,7 +21,7 @@ body {
 }
 
 a.link {
-  @include text-color(color); 
+  @include text-color(color);
   @include link-hover;
 }
 
@@ -44,8 +44,8 @@ svg path {
 }
 
 footer {
-  margin-bottom: 64px;
-  margin-top: 96px;
+  padding-bottom: 64px;
+  padding-top: 96px;
   display: flex;
   .socials {
     a {
