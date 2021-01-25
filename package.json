@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@barba/core": "^2.9.2",
-    "gsap": "^3.0.2",
+    "gsap": "^3.6.0",
     "imagesloaded": "^4.1.4",
     "smooth-scrollbar": "^8.5.1"
   }
